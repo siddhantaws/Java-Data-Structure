@@ -637,9 +637,20 @@ public class AbstractBinaryTree<E extends Comparable> implements Tree<E>, Serial
 	@Override
 	public void constructBinaryTreeFromSortedLinkedList(LinkedList<Comparable<?>> list) 
 	{
-		
+		root = constructBinaryTreeFromSortedLinkedList(list, 0, list.size()-1);
 	}
 	
-	
+	private Node constructBinaryTreeFromSortedLinkedList(LinkedList<Comparable<?>> list ,int start ,int end)
+	{
+		if(start>end)
+			return null;
+		int mid=start+(end-start)/2;
+		Node lnode=constructBinaryTreeFromSortedLinkedList(list, start, mid-1);
+		Node node=new Node<>();
+		node.setData(list.removeFirst());
+		node.setLeft(lnode);
+		node.setRight(constructBinaryTreeFromSortedLinkedList(list, mid+1, end));
+		return node;
+	}
 }
 

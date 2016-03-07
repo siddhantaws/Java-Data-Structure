@@ -1,14 +1,17 @@
 package com.manh.tree;
 
+import java.util.LinkedList;
+
 public class Main 
 {
 	public static void main(String[] args) 
 	{
 		BinarySearchTree<Integer> tree=new BinarySearchTree<>();
-		prepareData(tree);
+		//prepareData(tree);
 		//tree.printZigZagTraversal();
-		Comparable<?> array[]= {15,25,35,45,60,75,80};
-		tree.constructBinaryTreeFromSortedArray(array);
+		LinkedList<Comparable<?>> list=new LinkedList<>();
+		list.add(15);list.add(25);list.add(35);list.add(45);list.add(60);list.add(75);list.add(80);
+		tree.constructBinaryTreeFromSortedLinkedList(list);
 	}
 	private static void prepareData(BinarySearchTree binarySearchTree)
 	{
