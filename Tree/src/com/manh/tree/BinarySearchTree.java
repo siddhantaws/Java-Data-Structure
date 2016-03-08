@@ -1,10 +1,10 @@
 package com.manh.tree;
 
+import java.util.Collection;
 import java.util.LinkedList;
 
 public class BinarySearchTree<E extends Comparable> extends AbstractBinaryTree<Comparable> 
 {
-	
 	/**
 	 * 
 	*/

@@ -1,5 +1,6 @@
 package com.manh.tree;
 
+import java.util.Collection;
 import java.util.LinkedList;
 
 public interface Tree<E extends  Comparable<?>> 

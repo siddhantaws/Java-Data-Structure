@@ -159,7 +159,7 @@ public class KaryTree extends AbstractBinaryTree<Comparable> implements Serializ
 			this.children.clear();
 		}
 		
-		public Node<E> removeChildAt(int index) 
+		public Node<E> removeChildAt(int index)
 		{
 			return children.remove(index);
 		}
