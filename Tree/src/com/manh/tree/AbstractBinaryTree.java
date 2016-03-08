@@ -7,7 +7,7 @@ import java.util.Queue;
 import java.util.Stack;
 import java.util.concurrent.LinkedBlockingQueue;
 
-public class AbstractBinaryTree<E extends Comparable> implements Tree<E>, Serializable {
+public abstract class AbstractBinaryTree<E extends Comparable> implements Tree<E>, Serializable {
 	/**
 	 * 
 	*/
@@ -97,6 +97,18 @@ public class AbstractBinaryTree<E extends Comparable> implements Tree<E>, Serial
 		return true;
 	}
 
+	@Override
+	public boolean add(E parent, E child) 
+	{
+		throw new UnsupportedOperationException(" Operation Only Supported in kary tree");
+	}
+	
+	@Override
+	public boolean isEmpty() 
+	{
+		return root==null;
+	}
+	
 	@Override
 	public void preOrderTraversal() {
 		preOrderTraversalIterative(root);
@@ -652,5 +664,6 @@ public class AbstractBinaryTree<E extends Comparable> implements Tree<E>, Serial
 		node.setRight(constructBinaryTreeFromSortedLinkedList(list, mid+1, end));
 		return node;
 	}
+
 }
 

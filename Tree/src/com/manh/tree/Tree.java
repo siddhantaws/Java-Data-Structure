@@ -7,6 +7,10 @@ public interface Tree<E extends  Comparable<?>>
 
 	public boolean add(E e);
 	
+	public boolean add(E parent, E child);
+	
+	public boolean isEmpty();
+	
 	public void preOrderTraversal();
 	
 	public void inOrderTraversal();
