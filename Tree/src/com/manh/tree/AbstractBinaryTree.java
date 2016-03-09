@@ -23,6 +23,7 @@ public abstract class AbstractBinaryTree<E extends Comparable> implements Tree<E
 	private E max;
 
 	private static class Node<E extends Comparable> {
+		
 		private static Node NULL = new Node<Comparable>();
 
 		private E data;
@@ -62,7 +63,12 @@ public abstract class AbstractBinaryTree<E extends Comparable> implements Tree<E
 		private Node() {
 			this.data = null;
 		}
-
+		
+		@Override
+		public boolean equals(Object obj) 
+		{
+			return getData().equals((E)obj);
+		}
 	}
 
 	@Override
@@ -451,10 +457,16 @@ public abstract class AbstractBinaryTree<E extends Comparable> implements Tree<E
 			return sum == 0;
 		else {
 			sum = sum - (Integer) node.getData();
-			return sumExistInBinaryTree(node.getLeft(), sum) || sumExistInBinaryTree(node.getRight(), sum);
+			if( sumExistInBinaryTree(node.getLeft(), sum) || sumExistInBinaryTree(node.getRight(), sum))
+			{
+				System.out.println(node.getData());
+				return true;
+			}
 		}
+		return false;
 	}
 
+	
 	@Override
 	public void convertToMirrorImage() {
 		convertToItsMirror(root);
@@ -548,7 +560,7 @@ public abstract class AbstractBinaryTree<E extends Comparable> implements Tree<E
 		root = constructBinaryTreeFromInOrderAndPostOrder(inOrderE1, 0, inOrderE1.length-1, postOrderE2, 0, postOrderE2.length-1);
 	}
 	
-	public Node constructBinaryTreeFromInOrderAndPostOrder(E[] inOrderE1, int startInOrder, int endInOrder , E[] postOrderE2 ,int startPost, int endPost ) 
+	private Node constructBinaryTreeFromInOrderAndPostOrder(E[] inOrderE1, int startInOrder, int endInOrder , E[] postOrderE2 ,int startPost, int endPost ) 
 	{
 		if(startPost > endPost)
 		{
@@ -570,16 +582,36 @@ public abstract class AbstractBinaryTree<E extends Comparable> implements Tree<E
 		int numberOfNodes = index - startInOrder;
 		
 		node.setLeft(constructBinaryTreeFromInOrderAndPostOrder(inOrderE1, startInOrder, index-1, postOrderE2, startPost, (startPost + numberOfNodes)-1));
+		
 		node.setRight(constructBinaryTreeFromInOrderAndPostOrder(inOrderE1, index+1, endInOrder, postOrderE2, startPost + numberOfNodes, endPost-1));
+		
 		return node;
 	}
 
 	@Override
 	public void constructBinaryTreeFromInOrderAndPreOrder(E[] e1, E[] e2)
 	{
-		
+		root=constructBinaryTreeFromInOrderAndPreOrder(e1, 0, e1.length-1, e2, 0 , e2.length-1);
 	}
 
+	private Node constructBinaryTreeFromInOrderAndPreOrder(E[] e1 , int inStart , int inEnd , E[] e2 , int preStart , int preEnd )
+	{
+		if(inStart>inEnd)
+			return null;
+		Node n=new Node<>(e2[preStart]);
+		
+		int index=inStart;
+		for(;index<e1.length-1;index++)
+		{
+			if(e2[preStart].equals(e1[index]))
+				break ;
+		}
+		int totalelement = index- inStart;
+		n.setLeft(constructBinaryTreeFromInOrderAndPreOrder(e1, inStart, index-1, e2, preStart+1, preStart+totalelement ));
+		n.setRight(constructBinaryTreeFromInOrderAndPreOrder(e1, index+1, inEnd, e2, preStart+totalelement +1, preEnd));
+		return n;
+	}
+	
 	@Override
 	public void printZigZagTraversal() 
 	{
@@ -665,8 +697,5 @@ public abstract class AbstractBinaryTree<E extends Comparable> implements Tree<E
 		node.setRight(constructBinaryTreeFromSortedLinkedList(list, mid+1, end));
 		return node;
 	}
-
-	
-	
 }
 

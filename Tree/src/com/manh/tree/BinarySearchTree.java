@@ -1,6 +1,6 @@
 package com.manh.tree;
 
-import java.util.Collection;
+
 import java.util.LinkedList;
 
 public class BinarySearchTree<E extends Comparable> extends AbstractBinaryTree<Comparable> 
@@ -114,6 +114,12 @@ public class BinarySearchTree<E extends Comparable> extends AbstractBinaryTree<C
 	public void constructBinaryTreeFromInOrderAndPreOrder(Comparable[] e1, Comparable[] e2) 
 	{
 		super.constructBinaryTreeFromInOrderAndPreOrder(e1, e2);
+	}
+	
+	@Override
+	public void constructBinaryTreeFromInOrderAndPostOrder(Comparable[] inOrderE1, Comparable[] postOrderE2) 
+	{
+		super.constructBinaryTreeFromInOrderAndPostOrder(inOrderE1, postOrderE2);
 	}
 	
 	@Override
