@@ -29,9 +29,9 @@ public class QuickSort<E extends Comparable> implements Sorting<Comparable>
 	{
 		E e = (E)l.get(end);
 		int i=start , pIndex =start;
-		for( ; i<end-1 ; i++)
+		for( ; i<=end-1 ; i++)
 		{
-			if(e.compareTo(l.get(i))<0)
+			if(e.compareTo(l.get(i))>0)
 			{
 				swap(l, i, pIndex);
 				pIndex++;
