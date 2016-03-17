@@ -13,7 +13,6 @@ public class CircularLinkedList<E> extends LinkedList<E>
 	
 	private Node<E> last;
 
-
 	@Override
 	public void addLast(E e) 
 	{
