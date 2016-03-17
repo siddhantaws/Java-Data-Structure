@@ -9,10 +9,11 @@ public class MergeSort<E extends Comparable> implements Sorting<Comparable>
 	private static Comparable [] comp;
 	
 	@Override
-	public void sort(List list) {
+	public List sort(List list) {
 		comp=new Comparable[list.size()];
 		System.arraycopy(list, 0, comp, 0, list.size()-1);
 		mergeSort(list, 0, list.size() - 1);
+		return list;
 	}
 
 	private void mergeSort(List<E> list, int start, int end) {
@@ -50,4 +51,5 @@ public class MergeSort<E extends Comparable> implements Sorting<Comparable>
 			list.set(k++, comp[j++]);
 		}
 	}
+	
 }

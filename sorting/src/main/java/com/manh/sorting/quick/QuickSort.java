@@ -1,5 +1,6 @@
 package com.manh.sorting.quick;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.manh.sorting.sort.Sorting;
@@ -8,14 +9,12 @@ public class QuickSort<E extends Comparable> implements Sorting<Comparable>
 {
 
 	@Override
-	public void sort(List l) 
+	public List sort(List l) 
 	{
-		quickSort(l , 0 , l.size()-1 );
-		for(Integer x:(List<Integer>)l)
-			System.out.println(x);
+		 return quickSort(l , 0 , l.size()-1 );
 	}	
-	
-	private void quickSort(List l, int start , int end)
+		
+	private List quickSort(List l, int start , int end)
 	{
 		if(start<end)
 		{
@@ -23,6 +22,7 @@ public class QuickSort<E extends Comparable> implements Sorting<Comparable>
 			quickSort( l , start , pivot-1 );
 			quickSort( l , pivot+1 , end );
 		}
+		return l;
 	}
 	
 	private int getPivot(List l, int start , int end)
@@ -47,5 +47,7 @@ public class QuickSort<E extends Comparable> implements Sorting<Comparable>
 		l.set(dest, (E) l.get(source) );
 		l.set(source, temp  );
 	}
+
+	
 	
 }
