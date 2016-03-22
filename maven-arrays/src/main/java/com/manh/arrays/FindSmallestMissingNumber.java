@@ -2,7 +2,7 @@ package com.manh.arrays;
 
 public class FindSmallestMissingNumber 
 {
-	private static int arr[] = {4, 5, 10, 11};
+	private static int arr[] = {0, 1, 2, 6, 9};
 	
 	public static void main(String[] args) 
 	{
