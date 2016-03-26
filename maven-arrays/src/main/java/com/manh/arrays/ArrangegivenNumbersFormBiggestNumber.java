@@ -1,7 +1,10 @@
 package com.manh.arrays;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+
+import javax.xml.bind.JAXBException;
 
 public class ArrangegivenNumbersFormBiggestNumber 
 {
