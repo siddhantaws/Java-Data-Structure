@@ -11,7 +11,6 @@ public class MergeSort<E extends Comparable> implements Sorting<Comparable>
 	@Override
 	public List sort(List list) {
 		comp=new Comparable[list.size()];
-		System.arraycopy(list, 0, comp, 0, list.size()-1);
 		mergeSort(list, 0, list.size() - 1);
 		return list;
 	}
@@ -33,16 +32,16 @@ public class MergeSort<E extends Comparable> implements Sorting<Comparable>
 		int i = start;
 		int j = middle + 1;
 		int k = start;
-		while (i <= j && j <= end) {
+		while (i <= middle && j <= end) {
 			if (comp[i].compareTo(comp[j]) > 0) 
 			{
-				list.set(k++, comp[i++]);
+				list.set(k++, comp[j++]);
 			}else
 			{
-				list.set(k++, comp[j++]);
+				list.set(k++, comp[i++]);
 			}
 		}
-		while (i <= j )
+		while (i <= middle )
 		{
 			list.set(k++, comp[i++]);
 		}

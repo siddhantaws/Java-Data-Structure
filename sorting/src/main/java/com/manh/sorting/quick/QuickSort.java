@@ -1,8 +1,6 @@
 package com.manh.sorting.quick;
 
-import java.util.ArrayList;
 import java.util.List;
-
 import com.manh.sorting.sort.Sorting;
 
 public class QuickSort<E extends Comparable> implements Sorting<Comparable>
@@ -48,6 +46,4 @@ public class QuickSort<E extends Comparable> implements Sorting<Comparable>
 		l.set(source, temp  );
 	}
 
-	
-	
 }
