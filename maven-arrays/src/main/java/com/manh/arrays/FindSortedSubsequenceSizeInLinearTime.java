@@ -1,7 +1,7 @@
 package com.manh.arrays;
 
 public class FindSortedSubsequenceSizeInLinearTime {
-	private static int arr[] = { 12, 11, 10, 5, 6, 2, 30 };
+	private static int arr[] = { 12, 11, 10, 5, 6, 2, 30 ,7 ,8 };
 
 	public static void main(String[] args) {
 		int n = arr.length;
