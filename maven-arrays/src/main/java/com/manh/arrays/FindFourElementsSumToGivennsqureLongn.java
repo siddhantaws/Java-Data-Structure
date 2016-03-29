@@ -16,7 +16,7 @@ public class FindFourElementsSumToGivennsqureLongn
 			for(int j=i+1;j<arr.length ;j++,k++)
 				auxSum[k]=new Aux( arr[i]+ arr[j] , arr[i], arr[j] );
 		
-		List<Aux> l= new QuickSort<>().sort(auxSum);
+		List<Aux> l= new QuickSort().sort(auxSum);
 		int i = 0 , j= size =l.size()-1 ;
 		while( i<size  &&  j>=0)
 		{
