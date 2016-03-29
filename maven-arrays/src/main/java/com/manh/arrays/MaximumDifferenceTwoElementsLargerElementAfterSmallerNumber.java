@@ -6,7 +6,7 @@ public class MaximumDifferenceTwoElementsLargerElementAfterSmallerNumber
 	
 	public static void main(String[] args) 
 	{
-		
+		System.out.println(maxDiffOne(arr, arr.length));
 	}
 	//Solutions1
 	private static int maxDiffOne(int arr[], int arr_size)
