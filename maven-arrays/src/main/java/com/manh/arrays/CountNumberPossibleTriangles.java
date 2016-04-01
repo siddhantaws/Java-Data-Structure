@@ -8,7 +8,7 @@ import com.manh.sorting.quick.QuickSort;
 import com.manh.sorting.sort.Sorting;
 
 public class CountNumberPossibleTriangles {
-	private static int arr[] = { 10, 21, 22, 100, 101, 200, 300 };
+	private static int arr[] = { 4, 6, 3, 7 };
 
 	public static void main(String[] args) {
 		Sorting sorting = new QuickSort<Integer>();
@@ -21,7 +21,7 @@ public class CountNumberPossibleTriangles {
 		for (int i = 0; i < l.size() - 2; i++) {
 			int k = i + 2;
 			for (int j = i + 1; j < l.size() - 1; j++) {
-				while (k < l.size() - 1 &&  ( ((int) l.get(i)) + ((int) l.get(j)) ) > ((int) l.get(k)))
+				while (k < l.size()  &&  ( ((int) l.get(i)) + ((int) l.get(j)) ) > ((int) l.get(k)))
 					++k;
 				count += k - j - 1;
 			}
