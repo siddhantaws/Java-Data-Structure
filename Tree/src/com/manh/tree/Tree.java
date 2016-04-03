@@ -3,6 +3,8 @@ package com.manh.tree;
 import java.util.Collection;
 import java.util.LinkedList;
 
+import com.manh.tree.AbstractBinaryTree.Node;
+
 public interface Tree<E extends  Comparable<?>> 
 {
 
@@ -29,6 +31,8 @@ public interface Tree<E extends  Comparable<?>>
 	public boolean search(E e);
 	
 	public int getHeight();
+	
+	public int getHeight(Node n);
 	
 	public void levelOrderInReverseOrder();
 	

@@ -9,9 +9,10 @@ public class Main
 		BinarySearchTree<Integer> tree=new BinarySearchTree<>();
 		//prepareData(tree);
 		//tree.printZigZagTraversal();
-		LinkedList<Comparable<?>> list=new LinkedList<>();
-		list.add(15);list.add(25);list.add(35);list.add(45);list.add(60);list.add(75);list.add(80);
-		tree.constructBinaryTreeFromSortedLinkedList(list);
+		
+		Comparable arr[]={5,10,15};
+		tree.constructBinaryTreeFromSortedArray(arr);
+		//tree.constructBinaryTreeFromSortedLinkedList(list);
 	}
 	private static void prepareData(BinarySearchTree binarySearchTree)
 	{

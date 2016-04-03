@@ -124,6 +124,11 @@ public abstract class AbstractBinaryTree<E extends Comparable> implements Tree<E
 	}
 
 	@Override
+	public int getHeight(Node n) 
+	{
+		return getHeightRecursive(n);
+	}
+	@Override
 	public boolean add(E parent, E child) {
 		throw new UnsupportedOperationException(" Operation Only Supported in kary tree");
 	}
