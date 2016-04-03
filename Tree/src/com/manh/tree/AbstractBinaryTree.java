@@ -22,8 +22,8 @@ public abstract class AbstractBinaryTree<E extends Comparable> implements Tree<E
 
 	private E max;
 
-	private static class Node<E extends Comparable> {
-		
+	static class Node<E extends Comparable> {
+
 		private static Node NULL = new Node<Comparable>();
 
 		private E data;
@@ -31,6 +31,26 @@ public abstract class AbstractBinaryTree<E extends Comparable> implements Tree<E
 		private Node left;
 
 		private Node right;
+		
+		private int height ;
+		
+		private int size ;
+		
+		public int getSize() {
+			return size;
+		}
+
+		public void setSize(int size) {
+			this.size = size;
+		}
+
+		public int getHeight() {
+			return height;
+		}
+		
+		public void setHeight(int height) {
+			this.height = height;
+		}
 
 		public E getData() {
 			return data;
@@ -63,11 +83,10 @@ public abstract class AbstractBinaryTree<E extends Comparable> implements Tree<E
 		private Node() {
 			this.data = null;
 		}
-		
+
 		@Override
-		public boolean equals(Object obj) 
-		{
-			return getData().equals((E)obj);
+		public boolean equals(Object obj) {
+			return getData().equals((E) obj);
 		}
 	}
 
@@ -105,17 +124,15 @@ public abstract class AbstractBinaryTree<E extends Comparable> implements Tree<E
 	}
 
 	@Override
-	public boolean add(E parent, E child) 
-	{
+	public boolean add(E parent, E child) {
 		throw new UnsupportedOperationException(" Operation Only Supported in kary tree");
 	}
-	
+
 	@Override
-	public boolean isEmpty() 
-	{
-		return root==null;
+	public boolean isEmpty() {
+		return root == null;
 	}
-	
+
 	@Override
 	public void preOrderTraversal() {
 		preOrderTraversalIterative(root);
@@ -213,22 +230,18 @@ public abstract class AbstractBinaryTree<E extends Comparable> implements Tree<E
 			System.out.println(stack1.pop().getData());
 		}
 	}
-	
-	
+
 	@Override
-	public void reverseInOrderTraversal() 
-	{
+	public void reverseInOrderTraversal() {
 		reverseInOrderTraversalRecursive(root);
 	}
 
-	private void reverseInOrderTraversalRecursive(Node node)
-	{
-		if(node!=null)
-		{
+	private void reverseInOrderTraversalRecursive(Node node) {
+		if (node != null) {
 			reverseInOrderTraversalRecursive(node.getRight());
 			System.out.println(node.getData());
 			reverseInOrderTraversalRecursive(node.getLeft());
-			
+
 		}
 	}
 
@@ -457,8 +470,7 @@ public abstract class AbstractBinaryTree<E extends Comparable> implements Tree<E
 			return sum == 0;
 		else {
 			sum = sum - (Integer) node.getData();
-			if( sumExistInBinaryTree(node.getLeft(), sum) || sumExistInBinaryTree(node.getRight(), sum))
-			{
+			if (sumExistInBinaryTree(node.getLeft(), sum) || sumExistInBinaryTree(node.getRight(), sum)) {
 				System.out.println(node.getData());
 				return true;
 			}
@@ -466,7 +478,6 @@ public abstract class AbstractBinaryTree<E extends Comparable> implements Tree<E
 		return false;
 	}
 
-	
 	@Override
 	public void convertToMirrorImage() {
 		convertToItsMirror(root);
@@ -485,217 +496,190 @@ public abstract class AbstractBinaryTree<E extends Comparable> implements Tree<E
 	}
 
 	@Override
-	public boolean checkEqualityOfTwoBinaryTree(Tree tree) 
-	{
-		return checkEqualityOfTwoBinaryTree(getRoot(), ((AbstractBinaryTree)tree).getRoot());
+	public boolean checkEqualityOfTwoBinaryTree(Tree tree) {
+		return checkEqualityOfTwoBinaryTree(getRoot(), ((AbstractBinaryTree) tree).getRoot());
 	}
 
-	private boolean checkEqualityOfTwoBinaryTree(Node root1,Node root2) 
-	{
-		if(root1==null && root2==null)
+	private boolean checkEqualityOfTwoBinaryTree(Node root1, Node root2) {
+		if (root1 == null && root2 == null)
 			return true;
-		else 
-			return root1.getData().equals(root2)  && checkEqualityOfTwoBinaryTree(root1.getLeft(), root2.getLeft()) 
+		else
+			return root1.getData().equals(root2) && checkEqualityOfTwoBinaryTree(root1.getLeft(), root2.getLeft())
 					&& checkEqualityOfTwoBinaryTree(root1.getRight(), root2.getRight());
-		
+
 	}
 
 	@Override
-	public void printAncestorOfNodeInBinaryTree(E e) 
-	{
+	public void printAncestorOfNodeInBinaryTree(E e) {
 		printAncestorOfNodeInBinaryTree(e, root);
 	}
-	
-	private boolean printAncestorOfNodeInBinaryTree(E e, Node node)
-	{
-		if(node==null)
+
+	private boolean printAncestorOfNodeInBinaryTree(E e, Node node) {
+		if (node == null)
 			return false;
-		else  
-		{
-			if( node.getData().equals(e) ||  printAncestorOfNodeInBinaryTree(e, node.getLeft()) ||  printAncestorOfNodeInBinaryTree(e, node.getRight()))
+		else {
+			if (node.getData().equals(e) || printAncestorOfNodeInBinaryTree(e, node.getLeft())
+					|| printAncestorOfNodeInBinaryTree(e, node.getRight()))
 				System.out.println(node.getData());
 		}
 		return true;
 	}
 
 	@Override
-	public E getLeastCommonAncestor(E e1, E e2) 
-	{
-		return getLeastCommonAncestorIterative(root , e1 , e2);
+	public E getLeastCommonAncestor(E e1, E e2) {
+		return getLeastCommonAncestorIterative(root, e1, e2);
 	}
-	
-	private E getLeastCommonAncestorIterative(Node node , E e1 , E e2 ) 
-	{
-		
+
+	private E getLeastCommonAncestorIterative(Node node, E e1, E e2) {
+
 		return null;
 	}
 
-	/*@Override
-	public void constructBinaryTreeFromInOrderAndPreOrder(E[] e1, E[] e2) 
-	{
-		constructBinaryTreeFromInOrderAndPreOrder(e1, 0,  e1.length-1, e2, 0 , e2.length-1);
-	}
-	
-	private void constructBinaryTreeFromInOrderAndPreOrder(E[] inE2 ,int startIndexE2 ,  int lenE2 , E[] preE1,int startIndexE1 , int lenE1 )
-	{
-		if(startIndexE1 > lenE1 ||  startIndexE2 > lenE2)
-			return ;
-		Node node = new Node(preE1[startIndexE1]);
-		
-		int i = startIndexE1;
-		
-		for(; i<lenE1; i++){                                    		
-			if(inE2[i] == preE1[startIndexE1])						
-				break; 											
-		}
-		
-		node.left = constructBinaryTreeFromInOrderAndPreOrder(preE1, startIndexE1, i-1, preorder, startPre+1, startPre+1+i-startIn);
+	/*
+	 * @Override public void constructBinaryTreeFromInOrderAndPreOrder(E[] e1,
+	 * E[] e2) { constructBinaryTreeFromInOrderAndPreOrder(e1, 0, e1.length-1,
+	 * e2, 0 , e2.length-1); }
+	 * 
+	 * private void constructBinaryTreeFromInOrderAndPreOrder(E[] inE2 ,int
+	 * startIndexE2 , int lenE2 , E[] preE1,int startIndexE1 , int lenE1 ) {
+	 * if(startIndexE1 > lenE1 || startIndexE2 > lenE2) return ; Node node = new
+	 * Node(preE1[startIndexE1]);
+	 * 
+	 * int i = startIndexE1;
+	 * 
+	 * for(; i<lenE1; i++){ if(inE2[i] == preE1[startIndexE1]) break; }
+	 * 
+	 * node.left = constructBinaryTreeFromInOrderAndPreOrder(preE1,
+	 * startIndexE1, i-1, preorder, startPre+1, startPre+1+i-startIn);
+	 * 
+	 * }
+	 */
 
-	}
-*/
-	
 	@Override
-	public void constructBinaryTreeFromInOrderAndPostOrder(E[] inOrderE1, E[] postOrderE2) 
-	{
-		root = constructBinaryTreeFromInOrderAndPostOrder(inOrderE1, 0, inOrderE1.length-1, postOrderE2, 0, postOrderE2.length-1);
+	public void constructBinaryTreeFromInOrderAndPostOrder(E[] inOrderE1, E[] postOrderE2) {
+		root = constructBinaryTreeFromInOrderAndPostOrder(inOrderE1, 0, inOrderE1.length - 1, postOrderE2, 0,
+				postOrderE2.length - 1);
 	}
-	
-	private Node constructBinaryTreeFromInOrderAndPostOrder(E[] inOrderE1, int startInOrder, int endInOrder , E[] postOrderE2 ,int startPost, int endPost ) 
-	{
-		if(startPost > endPost)
-		{
-			   return null ;
+
+	private Node constructBinaryTreeFromInOrderAndPostOrder(E[] inOrderE1, int startInOrder, int endInOrder,
+			E[] postOrderE2, int startPost, int endPost) {
+		if (startPost > endPost) {
+			return null;
 		}
-		
+
 		Node node = new Node(postOrderE2[endPost]);
-		
-		int index=0;
-		for (int i = startInOrder; i <= endInOrder; i++) 
-		{
-		   if(postOrderE2[endPost]==inOrderE1[i])
-		   {
-		    index = i;
-		    break;
-		   }  
+
+		int index = 0;
+		for (int i = startInOrder; i <= endInOrder; i++) {
+			if (postOrderE2[endPost] == inOrderE1[i]) {
+				index = i;
+				break;
+			}
 		}
-		
+
 		int numberOfNodes = index - startInOrder;
-		
-		node.setLeft(constructBinaryTreeFromInOrderAndPostOrder(inOrderE1, startInOrder, index-1, postOrderE2, startPost, (startPost + numberOfNodes)-1));
-		
-		node.setRight(constructBinaryTreeFromInOrderAndPostOrder(inOrderE1, index+1, endInOrder, postOrderE2, startPost + numberOfNodes, endPost-1));
-		
+
+		node.setLeft(constructBinaryTreeFromInOrderAndPostOrder(inOrderE1, startInOrder, index - 1, postOrderE2,
+				startPost, (startPost + numberOfNodes) - 1));
+
+		node.setRight(constructBinaryTreeFromInOrderAndPostOrder(inOrderE1, index + 1, endInOrder, postOrderE2,
+				startPost + numberOfNodes, endPost - 1));
+
 		return node;
 	}
 
 	@Override
-	public void constructBinaryTreeFromInOrderAndPreOrder(E[] e1, E[] e2)
-	{
-		root=constructBinaryTreeFromInOrderAndPreOrder(e1, 0, e1.length-1, e2, 0 , e2.length-1);
+	public void constructBinaryTreeFromInOrderAndPreOrder(E[] e1, E[] e2) {
+		root = constructBinaryTreeFromInOrderAndPreOrder(e1, 0, e1.length - 1, e2, 0, e2.length - 1);
 	}
 
-	private Node constructBinaryTreeFromInOrderAndPreOrder(E[] e1 , int inStart , int inEnd , E[] e2 , int preStart , int preEnd )
-	{
-		if(inStart>inEnd)
+	private Node constructBinaryTreeFromInOrderAndPreOrder(E[] e1, int inStart, int inEnd, E[] e2, int preStart,
+			int preEnd) {
+		if (inStart > inEnd)
 			return null;
-		Node n=new Node<>(e2[preStart]);
-		
-		int index=inStart;
-		for(;index<e1.length-1;index++)
-		{
-			if(e2[preStart].equals(e1[index]))
-				break ;
+		Node n = new Node<>(e2[preStart]);
+
+		int index = inStart;
+		for (; index < e1.length - 1; index++) {
+			if (e2[preStart].equals(e1[index]))
+				break;
 		}
-		int totalelement = index- inStart;
-		n.setLeft(constructBinaryTreeFromInOrderAndPreOrder(e1, inStart, index-1, e2, preStart+1, preStart+totalelement ));
-		n.setRight(constructBinaryTreeFromInOrderAndPreOrder(e1, index+1, inEnd, e2, preStart+totalelement +1, preEnd));
+		int totalelement = index - inStart;
+		n.setLeft(constructBinaryTreeFromInOrderAndPreOrder(e1, inStart, index - 1, e2, preStart + 1,
+				preStart + totalelement));
+		n.setRight(constructBinaryTreeFromInOrderAndPreOrder(e1, index + 1, inEnd, e2, preStart + totalelement + 1,
+				preEnd));
 		return n;
 	}
-	
+
 	@Override
-	public void printZigZagTraversal() 
-	{
+	public void printZigZagTraversal() {
 		printZigZagTraversalIterative(root);
 	}
-	
-	private void printZigZagTraversalIterative(Node node)
-	{
-		Stack<Node> stack1=new Stack<>();
-		Stack<Node> stack2=new Stack<>();
+
+	private void printZigZagTraversalIterative(Node node) {
+		Stack<Node> stack1 = new Stack<>();
+		Stack<Node> stack2 = new Stack<>();
 		stack1.add(node);
-		boolean isLeftRightReading=true;
-		
-		while(!stack1.isEmpty())
-		{
-			Node n=stack1.pop();
+		boolean isLeftRightReading = true;
+
+		while (!stack1.isEmpty()) {
+			Node n = stack1.pop();
 			System.out.println(n.getData());
-			if(isLeftRightReading)
-			{
-				if(n.getLeft()!=null)
+			if (isLeftRightReading) {
+				if (n.getLeft() != null)
 					stack2.add(n.getLeft());
-				if(n.getRight()!=null)
+				if (n.getRight() != null)
 					stack2.add(n.getRight());
-			}else
-			{
-				if(n.getRight()!=null)
+			} else {
+				if (n.getRight() != null)
 					stack2.add(n.getRight());
-				if(n.getLeft()!=null)
+				if (n.getLeft() != null)
 					stack2.add(n.getLeft());
 			}
-			
-			if(stack1.isEmpty())
-			{
-				isLeftRightReading =!isLeftRightReading;
-				stack1=stack2;
-				stack2=new Stack<>();
-			}
-		}
- 	}
 
-	@Override
-	public void constructBinaryTreeFromSortedArray(E[] e) 
-	{
-		root=constructBinaryTreeFromSortedArray((Comparable<?>[])e, 0, e.length-1);
-	}
-	
-	private Node constructBinaryTreeFromSortedArray(Comparable[] e ,int start ,int end)
-	{
-		if(start>end)
-			return null;
-		Node<Comparable<?>> node=new Node<>();
-		
-		if(start==end)
-		{
-			node.setData(e[start]);
-			node.setLeft(null);
-			node.setRight(null);
-		}else
-		{
-			int mid= start+(end-start)/2;
-			node.setData(e[mid]);
-			node.setLeft(constructBinaryTreeFromSortedArray(e, start, mid-1));
-			node.setRight(constructBinaryTreeFromSortedArray(e, mid+1, end));
+			if (stack1.isEmpty()) {
+				isLeftRightReading = !isLeftRightReading;
+				stack1 = stack2;
+				stack2 = new Stack<>();
+			}
 		}
-		return node;
 	}
 
 	@Override
-	public void constructBinaryTreeFromSortedLinkedList(LinkedList<Comparable<?>> list) 
-	{
-		root = constructBinaryTreeFromSortedLinkedList(list, 0, list.size()-1);
+	public void constructBinaryTreeFromSortedArray(E[] e) {
+		root = constructBinaryTreeFromSortedArray((Comparable<?>[]) e, 0, e.length - 1);
 	}
-	
-	private Node constructBinaryTreeFromSortedLinkedList(LinkedList<Comparable<?>> list ,int start ,int end)
-	{
-		if(start>end)
+
+	private Node constructBinaryTreeFromSortedArray(Comparable[] e, int start, int end) {
+		if (start > end)
 			return null;
-		int mid=start+(end-start)/2;
-		Node lnode=constructBinaryTreeFromSortedLinkedList(list, start, mid-1);
-		Node node=new Node<>();
+		Node<Comparable> n = new Node<>();
+		if (start == end)
+			n.setData(e[start]);
+		else {
+			int mid = start + (end - start) / 2;
+			n.setData(e[mid]);
+			n.setLeft(constructBinaryTreeFromSortedArray(e, start, mid - 1));
+			n.setRight(constructBinaryTreeFromSortedArray(e, mid + 1, end));
+		}
+		return n;
+	}
+
+	@Override
+	public void constructBinaryTreeFromSortedLinkedList(LinkedList<Comparable<?>> list) {
+		root = constructBinaryTreeFromSortedLinkedList(list, 0, list.size() - 1);
+	}
+
+	private Node constructBinaryTreeFromSortedLinkedList(LinkedList<Comparable<?>> list, int start, int end) {
+		if (start > end)
+			return null;
+		int mid = start + (end - start) / 2;
+		Node lnode = constructBinaryTreeFromSortedLinkedList(list, start, mid - 1);
+		Node node = new Node<>();
 		node.setData(list.removeFirst());
 		node.setLeft(lnode);
-		node.setRight(constructBinaryTreeFromSortedLinkedList(list, mid+1, end));
+		node.setRight(constructBinaryTreeFromSortedLinkedList(list, mid + 1, end));
 		return node;
 	}
 }
-
